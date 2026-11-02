@@ -1,0 +1,52 @@
+{
+  "name": "antigravity-auto-accept-files",
+  "displayName": "Antigravity Auto Accept Files",
+  "description": "Experimental automatic file-only acceptance for Antigravity IDE; never invokes terminal or permission approval commands.",
+  "version": "0.2.0",
+  "publisher": "local-custom",
+  "private": true,
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "autoAcceptFiles.toggle",
+        "title": "Auto Accept Files: Toggle ON/OFF"
+      },
+      {
+        "command": "autoAcceptFiles.testOnce",
+        "title": "Auto Accept Files: Test Accept Current File Once"
+      },
+      {
+        "command": "autoAcceptFiles.showLog",
+        "title": "Auto Accept Files: Show Log"
+      }
+    ],
+    "configuration": {
+      "title": "Auto Accept Files",
+      "properties": {
+        "autoAcceptFiles.debounceMs": {
+          "type": "number",
+          "default": 2200,
+          "minimum": 1200,
+          "description": "Wait after last active-file edit before attempting acceptance (ms)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.0"
+  },
+  "author": "Gilmar Silva Santos"
+}
